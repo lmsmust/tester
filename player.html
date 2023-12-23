@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deegy anime</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><span>Deegy</span>Anime</a>
+    </header>
+
+    <section class="video-section">
+        <div class="video-wrapper">
+            <video class="video-player" controls>
+                <source src="default-video.mp4" type="video/mp4" id="videoSource">
+            </video>
+            <div class="video-description">
+                <h3 id="videoTitle">Гарчиг</h3>
+                <p id="videoText">Тайлбар</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript код -->
+    <script>
+        function getQueryParam(param) {
+            var searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(param);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var buttonNumber = getQueryParam("button");
+            var videoPlayer = document.querySelector(".video-player");
+            var videoSource = document.getElementById("videoSource");
+            var videoTitle = document.getElementById("videoTitle");
+            var videoText = document.getElementById("videoText");
+
+            // Товчлуурын дугаараас хамаарч өөрчлөлт хийх
+            switch (buttonNumber) {
+                case "1":
+                    videoTitle.textContent = "Гарчиг 1";
+                    videoText.textContent = "Тайлбар 1";
+                    videoSource.src = "video1.mp4";
+                    break;
+                case "2":
+                    videoTitle.textContent = "Гарчиг 2";
+                    videoText.textContent = "Тайлбар 2";
+                    videoSource.src = "video2.mp4";
+                    break;
+                case "3":
+                    videoTitle.textContent = "Гарчиг 3";
+                    videoText.textContent = "Тайлбар 3";
+                    videoSource.src = "video3.mp4";
+                    break;
+                // Нэмэлт тохиолдолдын болон үндсэн утгууд
+                default:
+                    videoTitle.textContent = "Анхны Гарчиг";
+                    videoText.textContent = "Анхны Тайлбар";
+                    videoSource.src = "default-video.mp4";
+            }
+
+            // Видеоны эх сурвалжийг шинэчлэх
+            videoPlayer.load();
+        });
+    </script>
+</body>
+</html>
